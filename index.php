@@ -38,7 +38,6 @@ echo '<br>';
 
 // Check if action is set
 if(!empty($_REQUEST['action'])){
-    echo "Refresh is running, Please refresh to see latest info" . '<br>';
     $action_set = true;
 }
 
@@ -55,3 +54,10 @@ if(isset($action_set) && $action_set){
 <form class="form-no-horizontal-spacing" id="reloadForm" action="index.php" method="post">
     <button class="btn btn-primary btn-cons" type="submit" >Reload page</button>
 </form>
+
+<?php
+$README = fopen('README.md', 'r');
+$line = fgets($README);
+fclose($f);
+echo 'BootDev dvpn version v' . explode("=",$line)[1];
+?>
