@@ -634,7 +634,7 @@
                                 "group": "root"
                             },
                             "/root/.aws/vpc.txt": {
-                                "content": { "Ref": "VPC" }
+                                "content": { "Ref": "VPC" },
                                 "mode": "000640",
                                 "owner": "root",
                                 "group": "root"
