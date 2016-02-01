@@ -702,6 +702,9 @@
                             "70puttingrequiredinfo": {
                                 "command": "cp /root/.aws/vpc.txt /var/www/html/data/vpc.txt;cp /root/.aws/config /var/www/html/data/config"
                             },
+                            "71changeownership": {
+                                "command": "chown nginx:nginx /var/www/html/data/vpc.txt;chown nginx:nginx /var/www/html/data/config"
+                            }
                             "80reloadallpacakges": {
                                 "command": "for x in nginx php-fpm pptpd;do service $x restart;done"
                             }
