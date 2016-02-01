@@ -38,10 +38,6 @@ try {
     $get_ip = false;
 }
 
-write_log('describeEIP',$describeEIP);
-write_log('describeEIP_Addresses',$describeEIP['Addresses']);
-write_log('describeEIP_Addresses_0',$describeEIP['Addresses'][0]);
-write_log('describeEIP_Addresses_0_AssociationId',$describeEIP['Addresses'][0]['AssociationId']);
 // IF EIP is attached, run disassociate.
 if($get_ip){
     $result = $ec2->disassociateAddress([

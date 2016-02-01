@@ -26,13 +26,14 @@ if ($handle) {
     fclose($handle);
 }
 
-echo 'Values starts<br>';
-echo "Instance ID = " . $instanceID . '<br>'; 
+echo "BootDev DVPN console" . '<br>';
+//echo 'Values starts<br>';
+//echo "Instance ID = " . $instanceID . '<br>'; 
 echo "Curren IP = " . $elasticIP . '<br>';
-echo "VPC = " . $vpc_id . '<br>';
-echo "aws_access_key_id = " . $aws_credentials['aws_access_key_id'] . '<br>'; 
-echo "aws_secret_access_key = " . $aws_credentials['aws_secret_access_key'] . '<br>';
-echo "region = " . $aws_credentials['region'] . '<br>';
+//echo "VPC = " . $vpc_id . '<br>';
+//echo "aws_access_key_id = " . $aws_credentials['aws_access_key_id'] . '<br>'; 
+//echo "aws_secret_access_key = " . $aws_credentials['aws_secret_access_key'] . '<br>';
+//echo "region = " . $aws_credentials['region'] . '<br>';
 echo '<br>';
 
 // Check if action is set
