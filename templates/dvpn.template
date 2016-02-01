@@ -633,7 +633,7 @@
                                 "owner": "root",
                                 "group": "root"
                             },
-                            "/root/vpc.txt": {
+                            "/root/.aws/vpc.txt": {
                                 "content": { "Ref": "VPC" }
                                 "mode": "000640",
                                 "owner": "root",
@@ -692,6 +692,18 @@
                             },
                             "61configphpfpm": {
                                 "command": "n=0;until [ $n -ge 5 ];do /bin/sed -i 's/apache/nginx/g' /etc/php-fpm.d/www.conf; [ $? -eq 0 ] && break;n=$[$n+1];sleep 10;done"
+                            },
+                            "62clonerepo": {
+                                "command": "git clone https://github.com/chankongching/dvpn_ui.git /var/www/html;chown -R nginx:nginx /var/www/html"
+                            },
+                            "63confignginx": {
+                                "command": "n=0;until [ $n -ge 5 ];do cp /var/www/html/config/default.conf /etc/nginx/conf.d/default.conf; [ $? -eq 0 ] && break;n=$[$n+1];sleep 10;done"
+                            },
+                            "70puttingrequiredinfo": {
+                                "command": "cp /root/.aws/vpc.txt /var/www/html/data/vpc.txt;cp /root/.aws/config /var/www/html/data/config"
+                            },
+                            "80reloadallpacakges": {
+                                "command": "for x in nginx php-fpm pptpd;do service $x restart;done"
                             }
                         }
                     }
