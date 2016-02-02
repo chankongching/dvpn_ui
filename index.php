@@ -1,6 +1,6 @@
 <html>
 	<head>
-		<title>Dvpn_ui</title>
+		<title>VPN console</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<!--[if lte IE 8]><script src="assets/js/html5shiv.js"></script><![endif]-->
@@ -21,8 +21,8 @@
 					<section id="main">
 						<header>
 					
-							<h1>Dvpn UI</h1>
-							<p>UI version K1</p>
+							<h1>Diversified VPN</h1>
+							<p>IP control panel</p>
 						</header>
                         
                         <?php
@@ -86,15 +86,15 @@ if(isset($action_set) && $action_set){
 $README = fopen('README.md', 'r');
 $line = fgets($README);
 fclose($f);
-echo 'BootDev dvpn version v' . explode("=",$line)[1];
+echo 'console version v' . explode("=",$line)[1];
 ?>
 					</section>
 
 				<!-- Footer -->
 					<footer id="footer">
 						<ul class="copyright">
-							<li>&copy; Jacky Chan</li>
-							<li>Design: Jacky Chan</li>
+							<li>&copy; BootDev</li>
+							<li>DVPN</li>
 						</ul>
 					</footer>
 
