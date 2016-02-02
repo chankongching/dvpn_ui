@@ -21,24 +21,13 @@
         "InstanceType": {
             "Description": "EC2 instance type",
             "Type": "String",
-            "Default": "t1.micro",
+            "Default": "t2.nano",
             "AllowedValues": [
-                "t1.micro",
-                "m1.small",
+                "t2.nano",
+                "t2.micro",
                 "m3.medium",
-                "m3.large",
-                "m3.xlarge",
-                "m3.2xlarge",
-                "c3.large",
-                "c3.xlarge",
-                "c3.2xlarge",
-                "c3.4xlarge",
-                "c3.8xlarge",
-                "c4.large",
                 "c4.xlarge",
-                "c4.2xlarge",
-                "c4.4xlarge",
-                "c4.8xlarge"
+                "c3.8xlarge"
             ],
             "ConstraintDescription": "must be a valid EC2 instance type."
         },
@@ -64,46 +53,6 @@
                         {
                             "Ref": "InstanceType"
                         },
-                        "t1.micro"
-                    ]
-                },
-                {
-                    "Fn::Equals": [
-                        {
-                            "Ref": "InstanceType"
-                        },
-                        "t2.micro"
-                    ]
-                },
-                {
-                    "Fn::Equals": [
-                        {
-                            "Ref": "InstanceType"
-                        },
-                        "t2.small"
-                    ]
-                },
-                {
-                    "Fn::Equals": [
-                        {
-                            "Ref": "InstanceType"
-                        },
-                        "t2.medium"
-                    ]
-                },
-                {
-                    "Fn::Equals": [
-                        {
-                            "Ref": "InstanceType"
-                        },
-                        "c4.large"
-                    ]
-                },
-                {
-                    "Fn::Equals": [
-                        {
-                            "Ref": "InstanceType"
-                        },
                         "c4.xlarge"
                     ]
                 },
@@ -112,23 +61,7 @@
                         {
                             "Ref": "InstanceType"
                         },
-                        "c4.2xlarge"
-                    ]
-                },
-                {
-                    "Fn::Equals": [
-                        {
-                            "Ref": "InstanceType"
-                        },
-                        "c4.4xlarge"
-                    ]
-                },
-                {
-                    "Fn::Equals": [
-                        {
-                            "Ref": "InstanceType"
-                        },
-                        "c4.8xlarge"
+                        "c3.8xlarge"
                     ]
                 }
             ]
@@ -136,52 +69,19 @@
     },
     "Mappings": {
         "AWSInstanceType2Arch": {
-            "t1.micro": {
-                "Arch": "PVebs"
+            "t2.nano": {
+                "Arch": "HVMebs"
             },
-            "m1.small": {
-                "Arch": "PVinstancestore"
+            "t2.micro": {
+                "Arch": "HVMebs"
             },
             "m3.medium": {
                 "Arch": "PVinstancestore"
             },
-            "m3.large": {
-                "Arch": "PVinstancestore"
-            },
-            "m3.xlarge": {
-                "Arch": "PVinstancestore"
-            },
-            "m3.2xlarge": {
-                "Arch": "PVinstancestore"
-            },
-            "c3.large": {
-                "Arch": "PVinstancestore"
-            },
-            "c3.xlarge": {
-                "Arch": "PVinstancestore"
-            },
-            "c3.2xlarge": {
-                "Arch": "PVinstancestore"
-            },
-            "c3.4xlarge": {
-                "Arch": "PVinstancestore"
-            },
-            "c3.8xlarge": {
-                "Arch": "PVinstancestore"
-            },
-            "c4.large": {
-                "Arch": "HVMebs"
-            },
             "c4.xlarge": {
                 "Arch": "HVMebs"
             },
-            "c4.2xlarge": {
-                "Arch": "HVMebs"
-            },
-            "c4.4xlarge": {
-                "Arch": "HVMebs"
-            },
-            "c4.8xlarge": {
+            "c3.8xlarge": {
                 "Arch": "HVMebs"
             }
         },
@@ -220,6 +120,10 @@
                 "PVinstancestore": "ami-a42fb8a4",
                 "PVebs": "ami-9c2fb89c",
                 "HVMebs": "ami-9a2fb89a"
+            },
+            "ap-northeast-2":{
+                "PVinstancestore": "ami-4118d72f",
+                "HVMebs": "ami-249b554a"
             },
             "ap-southeast-2": {
                 "PVinstancestore": "ami-851856bf",
@@ -704,7 +608,7 @@
                             },
                             "71changeownership": {
                                 "command": "chown nginx:nginx /var/www/html/data/vpc.txt;chown nginx:nginx /var/www/html/data/config"
-                            }
+                            },
                             "80reloadallpacakges": {
                                 "command": "for x in nginx php-fpm pptpd;do service $x restart;done"
                             }
