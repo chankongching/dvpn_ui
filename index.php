@@ -1,31 +1,28 @@
 <html>
-	<head>
-		<title>IP console panel</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<!--[if lte IE 8]><script src="assets/js/html5shiv.js"></script><![endif]-->
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
-		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-	</head>
+    <head>
+        <title>IP console panel</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <!--[if lte IE 8]><script src="assets/js/html5shiv.js"></script><![endif]-->
+        <link rel="stylesheet" href="assets/css/main.css" />
+        <!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+        <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+        <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+    </head>
+    <body class="is-loading">
+        <script src="assets/js/ZeroClipboard.js"></script>
+        <script src="assets/js/main.js"></script>
+        <script type="text/javascript" src="assets/js/jquery.min.js"></script>
+	<!-- Wrapper -->
+        <div id="wrapper">
+            <!-- Main -->
+            <section id="main">
+                <header>
+                    <h1>BootDev</h1><h1>Diversified&nbsp;VPN</h1>
+                    <p>IP control panel</p>
+                </header>
 
-
-
-<body class="is-loading">
-
-		<!-- Wrapper -->
-			<div id="wrapper">
-
-				<!-- Main -->
-					<section id="main">
-						<header>
-					
-							<h1>BootDev</h1><h1>Diversified&nbsp;VPN</h1>
-							<p>IP control panel</p>
-						</header>
-                        
-                        <?php
+<?php
 require_once 'tools/functions.php';
 
 // Prepare variables.
@@ -77,48 +74,55 @@ if(isset($action_set) && $action_set){
 <?php
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Show INFO
-//echo "BootDev DVPN console" . '<br>';
-//echo 'Values starts<br>';
 //echo "Instance ID = " . $instanceID . '<br>';
-echo "<p ID='copytext'>Curren IP = " . $elasticIP . ' <!--<img src="images/copy.png" alt="Copy to Clipboard" style="max-width:100%;max-height:100%;vertical-align:middle;height: 1em;" onClick="ClipBoard();"/>--></p><br>';
+?>
+                     <button id="target-to-copy" data-clipboard-target="clipboard-text">Click To Copy</button>
+                     <textarea name="clipboard-text" id="clipboard-text" class="clipboard-text">
+<?php 
+    echo $elasticIP; 
+?>
+                     </textarea>
+<?php
 //echo "VPC = " . $vpc_id . '<br>';
 //echo "aws_access_key_id = " . $aws_credentials['aws_access_key_id'] . '<br>';
 //echo "aws_secret_access_key = " . $aws_credentials['aws_secret_access_key'] . '<br>';
 //echo "region = " . $aws_credentials['region'] . '<br>';
-echo '<br>';
 ?>
-					</section>
-
-				<!-- Footer -->
-					<footer id="footer">
+                </section>
+                <!-- Footer -->
+                <footer id="footer">
 <?php
 $README = fopen('README.md', 'r');
 $line = fgets($README);
 fclose($f);
 echo 'console version v' . explode("=",$line)[1];
 ?>
-						<ul class="copyright">
-							<li>&copy; BootDev</li>
-							<li>DVPN</li>
-						</ul>
-					</footer>
+                <ul class="copyright">
+                    <li>&copy; BootDev</li>
+                    <li>DVPN</li>
+                </ul>
+            </footer>
+        </div>
+        <!-- Scripts -->
+        <!--[if lte IE 8]><script src="assets/js/respond.min.js"></script><![endif]-->
+        <script>
+            if ('addEventListener' in window) {
+                window.addEventListener('load', function() { document.body.className = document.body.className.replace(/\bis-loading\b/, ''); });
+                document.body.className += (navigator.userAgent.match(/(MSIE|rv:11\.0)/) ? ' is-ie' : '');
+            }
 
-			</div>
+            var clientTarget = new ZeroClipboard( $("#target-to-copy"), {
+                moviePath: "assets/js/ZeroClipboard.swf",
+                debug: false
+            } );
 
-		<!-- Scripts -->
-			<!--[if lte IE 8]><script src="assets/js/respond.min.js"></script><![endif]-->
-			<script>
-				if ('addEventListener' in window) {
-					window.addEventListener('load', function() { document.body.className = document.body.className.replace(/\bis-loading\b/, ''); });
-					document.body.className += (navigator.userAgent.match(/(MSIE|rv:11\.0)/) ? ' is-ie' : '');
-				}
-function ClipBoard() 
-{
-holdtext.innerText = copytext.innerText;
-Copied = holdtext.createTextRange();
-Copied.execCommand("Copy");
-}
-			</script>
-
-	</body>
+            clientTarget.on( "load", function(clientTarget){
+                $('#flash-loaded').fadeIn();
+                clientTarget.on( "complete", function(clientTarget, args) {
+                    clientTarget.setText( args.text );
+                    $('#target-to-copy-text').fadeIn();
+                } );
+            } );
+        </script>
+    </body>
 </html>
