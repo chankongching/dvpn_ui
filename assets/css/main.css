@@ -629,6 +629,8 @@
 		text-align: center;
 		text-decoration: none;
 		white-space: nowrap;
+                width: 50%;
+                vertical-align: middle;
 	}
 
 		input[type="submit"]:hover,

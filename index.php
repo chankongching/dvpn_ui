@@ -1,6 +1,6 @@
 <html>
 	<head>
-		<title>VPN console</title>
+		<title>IP console panel</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<!--[if lte IE 8]><script src="assets/js/html5shiv.js"></script><![endif]-->
@@ -21,7 +21,7 @@
 					<section id="main">
 						<header>
 					
-							<h1>Diversified VPN</h1>
+							<h1>BootDev</h1><h1>Diversified&nbsp;VPN</h1>
 							<p>IP control panel</p>
 						</header>
                         
@@ -53,16 +53,8 @@ if ($handle) {
     fclose($handle);
 }
 
-echo "BootDev DVPN console" . '<br>';
-//echo 'Values starts<br>';
-//echo "Instance ID = " . $instanceID . '<br>'; 
-echo "Curren IP = " . $elasticIP . '<br>';
-//echo "VPC = " . $vpc_id . '<br>';
-//echo "aws_access_key_id = " . $aws_credentials['aws_access_key_id'] . '<br>'; 
-//echo "aws_secret_access_key = " . $aws_credentials['aws_secret_access_key'] . '<br>';
-//echo "region = " . $aws_credentials['region'] . '<br>';
-echo '<br>';
-
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Show ICON
 // Check if action is set
 if(!empty($_REQUEST['action'])){
     $action_set = true;
@@ -75,23 +67,36 @@ if(isset($action_set) && $action_set){
 }
 ?>
 <form class="form-no-horizontal-spacing" id="refreshForm" action="index.php?action=refresh" method="post">
-    <button class="btn btn-primary btn-cons" type="submit" >Refresh VPN IP</button>
+    <button class="btn btn-primary btn-cons" type="submit" >IP <img src="images/refresh.png" alt="Change IP" style="max-width:100%;max-height:100%;height:80%;vertical-align:middle;position: relative;top: -3px;" /></button>
 </form>
 
 <form class="form-no-horizontal-spacing" id="reloadForm" action="index.php" method="post">
-    <button class="btn btn-primary btn-cons" type="submit" >Reload page</button>
+    <button class="btn btn-primary btn-cons" type="submit" >Check <img src="images/check.png" alt="Check Current IP" style="max-width:100%;max-height:100%;height:80%;vertical-align:middle;position: relative;top: -3px;" /></button>
 </form>
 
+<?php
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Show INFO
+//echo "BootDev DVPN console" . '<br>';
+//echo 'Values starts<br>';
+//echo "Instance ID = " . $instanceID . '<br>';
+echo "<p ID='copytext'>Curren IP = " . $elasticIP . ' <!--<img src="images/copy.png" alt="Copy to Clipboard" style="max-width:100%;max-height:100%;vertical-align:middle;height: 1em;" onClick="ClipBoard();"/>--></p><br>';
+//echo "VPC = " . $vpc_id . '<br>';
+//echo "aws_access_key_id = " . $aws_credentials['aws_access_key_id'] . '<br>';
+//echo "aws_secret_access_key = " . $aws_credentials['aws_secret_access_key'] . '<br>';
+//echo "region = " . $aws_credentials['region'] . '<br>';
+echo '<br>';
+?>
+					</section>
+
+				<!-- Footer -->
+					<footer id="footer">
 <?php
 $README = fopen('README.md', 'r');
 $line = fgets($README);
 fclose($f);
 echo 'console version v' . explode("=",$line)[1];
 ?>
-					</section>
-
-				<!-- Footer -->
-					<footer id="footer">
 						<ul class="copyright">
 							<li>&copy; BootDev</li>
 							<li>DVPN</li>
@@ -107,6 +112,12 @@ echo 'console version v' . explode("=",$line)[1];
 					window.addEventListener('load', function() { document.body.className = document.body.className.replace(/\bis-loading\b/, ''); });
 					document.body.className += (navigator.userAgent.match(/(MSIE|rv:11\.0)/) ? ' is-ie' : '');
 				}
+function ClipBoard() 
+{
+holdtext.innerText = copytext.innerText;
+Copied = holdtext.createTextRange();
+Copied.execCommand("Copy");
+}
 			</script>
 
 	</body>
