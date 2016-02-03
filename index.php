@@ -64,11 +64,11 @@ if(isset($action_set) && $action_set){
 }
 ?>
 <form class="form-no-horizontal-spacing" id="refreshForm" action="index.php?action=refresh" method="post">
-    <button class="btn btn-primary btn-cons" type="submit" >IP <img src="images/refresh.png" alt="Change IP" style="max-width:100%;max-height:100%;height:80%;vertical-align:middle;position: relative;top: -3px;" /></button>
+    <button class="btn btn-primary btn-cons" type="submit" ><p>IP </p><img src="images/refresh.png" alt="Change IP" style="max-width:100%;max-height:100%;height:80%;vertical-align:middle;position: relative;top: -3px;" /></button>
 </form>
 
 <form class="form-no-horizontal-spacing" id="reloadForm" action="index.php" method="post">
-    <button class="btn btn-primary btn-cons" type="submit" >Check <img src="images/check.png" alt="Check Current IP" style="max-width:100%;max-height:100%;height:80%;vertical-align:middle;position: relative;top: -3px;" /></button>
+    <button class="btn btn-primary btn-cons" type="submit" ><p>Check </p><img src="images/check.png" alt="Check Current IP" style="max-width:100%;max-height:100%;height:80%;vertical-align:middle;position: relative;top: -3px;" /></button>
 </form>
 
 <?php
@@ -76,12 +76,15 @@ if(isset($action_set) && $action_set){
 // Show INFO
 //echo "Instance ID = " . $instanceID . '<br>';
 ?>
-                     <button id="target-to-copy" data-clipboard-target="clipboard-text">Click To Copy</button>
-                     <textarea name="clipboard-text" id="clipboard-text" class="clipboard-text">
+                         <b>Current IP: </b>
+                         <button id="target-to-copy" data-clipboard-target="clipboard-text">
+                         <p name="clipboard-text" id="clipboard-text" class="clipboard-text">
 <?php 
     echo $elasticIP; 
 ?>
-                     </textarea>
+                         </p>
+                         <img src="images/copy.png" alt="Click to copy" style="max-width:100%;max-height:100%;height:80%;vertical-align:middle;position: relative;top: -3px;" />
+                         </button>
 <?php
 //echo "VPC = " . $vpc_id . '<br>';
 //echo "aws_access_key_id = " . $aws_credentials['aws_access_key_id'] . '<br>';

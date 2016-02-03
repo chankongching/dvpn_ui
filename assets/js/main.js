@@ -1,5 +1,5 @@
 // main.js
-var client = new ZeroClipboard( document.getElementById("#target-to-copy") );
+var client = new ZeroClipboard( document.getElementById("#target-to-copy").trim() );
 
 client.on( "ready", function( readyEvent ) {
   // alert( "ZeroClipboard SWF is ready!" );
