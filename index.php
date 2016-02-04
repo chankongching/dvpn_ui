@@ -10,9 +10,14 @@
         <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
     </head>
     <body class="is-loading">
+        <!--
         <script src="assets/js/ZeroClipboard.js"></script>
         <script src="assets/js/main.js"></script>
+        <script src="assets/js/copy.js"></script>
         <script type="text/javascript" src="assets/js/jquery.min.js"></script>
+        -->
+        <script src="assets/js/clipboard.js"></script>
+        <script src="assets/js/touche.js"></script>
 	<!-- Wrapper -->
         <div id="wrapper">
             <!-- Main -->
@@ -77,14 +82,60 @@ if(isset($action_set) && $action_set){
 //echo "Instance ID = " . $instanceID . '<br>';
 ?>
                          <b>Current IP: </b>
+                         <!--
                          <button id="target-to-copy" data-clipboard-target="clipboard-text">
+                         -->
+<!--
+                         <input type="text" id="copyTarget" value="<?php echo $elasticIP; ?>">
+                         <button id="copyButton">Copy</button>
+-->
+<!--
                          <p name="clipboard-text" id="clipboard-text" class="clipboard-text">
 <?php 
     echo $elasticIP; 
 ?>
                          </p>
-                         <img src="images/copy.png" alt="Click to copy" style="max-width:100%;max-height:100%;height:80%;vertical-align:middle;position: relative;top: -3px;" />
-                         </button>
+-->
+                         <!--<img src="images/copy.png" alt="Click to copy" style="max-width:100%;max-height:100%;height:80%;vertical-align:middle;position: relative;top: -3px;" />-->
+                         <!--</button>-->
+<!--
+<textarea id="txt"><?php echo $elasticIP; ?></textarea>
+<div align="center"><button class="btn-md" onclick="copy();">copy</button></div>
+-->
+<button id='markup-copy'>Copy Button</button>
+
+<script>
+    var my_var = "<?php echo $elasticIP; ?>";
+function addMultipleListeners(element,events,handler,useCapture,args){
+  if (!(events instanceof Array)){
+    throw 'addMultipleListeners: '+
+          'please supply an array of eventstrings '+
+          '(like ["click","mouseover"])';
+  }
+  //create a wrapper for to be able to use additional arguments
+  var handlerFn = function(e){
+    handler.apply(this, args && args instanceof Array ? args : []);
+  }
+  for (var i=0;i<events.length;i+=1){
+    element.addEventListener(events[i],handlerFn,useCapture);
+  }
+}
+
+function handler(e) {
+  // do things
+        clipboard.copy({
+            'text/plain': my_var,
+            'text/html': '<i>here</i> is some <b>rich text</b>'
+        }).then(
+            function(){console.log('success'); },
+            function(err){console.log('failure', err);
+        });
+};
+
+// usage
+addMultipleListeners(document.getElementById('markup-copy'),
+                     ['touchstart','click'],handler,false);
+</script>
 <?php
 //echo "VPC = " . $vpc_id . '<br>';
 //echo "aws_access_key_id = " . $aws_credentials['aws_access_key_id'] . '<br>';
@@ -113,7 +164,9 @@ echo 'console version v' . explode("=",$line)[1];
                 window.addEventListener('load', function() { document.body.className = document.body.className.replace(/\bis-loading\b/, ''); });
                 document.body.className += (navigator.userAgent.match(/(MSIE|rv:11\.0)/) ? ' is-ie' : '');
             }
-
+        </script>
+        <!--
+        <script>
             var clientTarget = new ZeroClipboard( $("#target-to-copy"), {
                 moviePath: "assets/js/ZeroClipboard.swf",
                 debug: false
@@ -127,5 +180,20 @@ echo 'console version v' . explode("=",$line)[1];
                 } );
             } );
         </script>
+        -->
+    <script>
+        function copy()
+        {
+            try
+            {
+                $('#txt').select();
+                document.execCommand('copy');
+            }
+            catch(e)
+            {
+                alert(e);
+            }
+        }
+    </script>
     </body>
 </html>
