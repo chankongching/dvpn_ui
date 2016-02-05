@@ -183,6 +183,9 @@
 	p {
 		margin: 0 0 1.5em 0;
 	}
+        p#message {
+                text-align: right;
+        }
 
 	h1, h2, h3, h4, h5, h6 {
 		color: #313f47;
@@ -283,9 +286,15 @@
 		color: inherit;
 		display: block;
 		outline: 0;
-		padding: 0 1em;
+		//padding: 0 1em;
+                margin: 0 0 0 2em;
 		text-decoration: none;
-		width: 100%;
+		width: 15em;
+                height: 2.25em;
+                white-space: normal;
+                text-align: justify;
+                -moz-text-align-last: center; /* Firefox 12+ */
+                text-align-last: center;
 	}
 
 		input[type="text"]:invalid,
@@ -344,13 +353,6 @@
 	input[type="email"],
 	select {
 		height: 2.75em;
-	}
-
-	textarea {
-		//padding: 0.75em 1em;
-                margin: 1em auto;
-                width: 10em; 
-                height: 2em;
 	}
 
 	input[type="checkbox"],
@@ -708,6 +710,13 @@
                         display: inline;
                         top: -2px;
                         position: relative;
+                }
+
+                button#markup-copy, button#markup-copy-new {
+                        width: 2.75em;
+                        float: right;
+                        padding: 0;
+                        clear: both;
                 }
 
 /* Main */

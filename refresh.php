@@ -60,5 +60,4 @@ if($get_ip){
         //'PublicIp' => $elasticIP,
     ]);
 }
-echo '<br>';
-echo 'New IP = ' . $allocation["PublicIp"];
+$new_ip = $allocation["PublicIp"];
