@@ -103,7 +103,8 @@ if(isset($action_set) && $action_set){
 <div align="center"><button class="btn-md" onclick="copy();">copy</button></div>
 -->
 <button id='markup-copy'>Copy Button</button>
-
+<textarea id="txt"><?php echo $elasticIP; ?></textarea>
+<p><i>Copy only works in Desktop Browser</i><p>
 <script>
     var my_var = "<?php echo $elasticIP; ?>";
 function addMultipleListeners(element,events,handler,useCapture,args){
