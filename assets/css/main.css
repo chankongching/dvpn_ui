@@ -347,7 +347,10 @@
 	}
 
 	textarea {
-		padding: 0.75em 1em;
+		//padding: 0.75em 1em;
+                margin: 1em auto;
+                width: 10em; 
+                height: 2em;
 	}
 
 	input[type="checkbox"],
@@ -731,7 +734,7 @@
 		-webkit-transition: opacity 1s ease, -webkit-transform 1s ease;
 		-ms-transition: opacity 1s ease, -ms-transform 1s ease;
 		transition: opacity 1s ease, transform 1s ease;
-                height: 30em;
+                height: 32em;
 	}
 
 		#main .avatar {
