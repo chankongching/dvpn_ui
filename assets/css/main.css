@@ -183,9 +183,6 @@
 	p {
 		margin: 0 0 1.5em 0;
 	}
-        p#message {
-                text-align: right;
-        }
 
 	h1, h2, h3, h4, h5, h6 {
 		color: #313f47;
@@ -295,6 +292,7 @@
                 text-align: justify;
                 -moz-text-align-last: center; /* Firefox 12+ */
                 text-align-last: center;
+                margin-bottom: 1em;
 	}
 
 		input[type="text"]:invalid,
@@ -743,7 +741,6 @@
 		-webkit-transition: opacity 1s ease, -webkit-transform 1s ease;
 		-ms-transition: opacity 1s ease, -ms-transform 1s ease;
 		transition: opacity 1s ease, transform 1s ease;
-                height: 32em;
 	}
 
 		#main .avatar {

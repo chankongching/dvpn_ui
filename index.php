@@ -23,7 +23,7 @@
             <!-- Main -->
             <section id="main">
                 <header>
-                    <h1>BootDev</h1><h1>Diversified&nbsp;VPN</h1>
+                    <h1>4PLUS.io</h1><h1>Diversified&nbsp;VPN</h1>
                     <p>IP control panel</p>
                 </header>
 
@@ -163,7 +163,7 @@ fclose($f);
 echo 'console version v' . explode("=",$line)[1];
 ?>
                 <ul class="copyright">
-                    <li>&copy; BootDev</li>
+                    <li>&copy; 4PLUS</li>
                     <li>DVPN</li>
                 </ul>
             </footer>
@@ -176,37 +176,5 @@ echo 'console version v' . explode("=",$line)[1];
                 document.body.className += (navigator.userAgent.match(/(MSIE|rv:11\.0)/) ? ' is-ie' : '');
             }
         </script>
-        <!--
-        <script>
-            var clientTarget = new ZeroClipboard( $("#target-to-copy"), {
-                moviePath: "assets/js/ZeroClipboard.swf",
-                debug: false
-            } );
-
-            clientTarget.on( "load", function(clientTarget){
-                $('#flash-loaded').fadeIn();
-                clientTarget.on( "complete", function(clientTarget, args) {
-                    clientTarget.setText( args.text );
-                    $('#target-to-copy-text').fadeIn();
-                } );
-            } );
-        </script>
-        -->
-<!--
-    <script>
-        function copy()
-        {
-            try
-            {
-                $('#txt').select();
-                document.execCommand('copy');
-            }
-            catch(e)
-            {
-                alert(e);
-            }
-        }
-    </script>
--->
     </body>
 </html>
