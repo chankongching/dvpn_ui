@@ -126,7 +126,7 @@ function handler(e) {
   // do things
         clipboard.copy({
             'text/plain': my_var,
-            'text/html': '<i>here</i> is some <b>rich text</b>'
+            'text/html': my_var 
         }).then(
             function(){console.log('success'); },
             function(err){console.log('failure', err);
